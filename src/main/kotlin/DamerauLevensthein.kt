@@ -1,5 +1,6 @@
 package de.kotlincook.textmining
 
+import java.lang.Math.max
 import java.util.HashMap
 
 /**
@@ -92,7 +93,7 @@ class DamerauLevenshtein(private val deleteCost: Int,
                 if (candidateSwapIndex != null && jSwap != -1) {
                     swapDistance = 0
                     if (candidateSwapIndex > 0 || jSwap > 0) {
-                        swapDistance = table[Math.max(0, candidateSwapIndex - 1)][Math.max(0, jSwap - 1)]
+                        swapDistance = table[max(0, candidateSwapIndex - 1)][max(0, jSwap - 1)]
                     }
                     swapDistance += (i - candidateSwapIndex - 1) * deleteCost
                     swapDistance += (j - jSwap - 1) * insertCost + swapCost
@@ -103,10 +104,4 @@ class DamerauLevenshtein(private val deleteCost: Int,
         }
         return table[source.length - 1][target.length - 1]
     }
-}
-
-
-fun main(args: Array<String>) {
-    val algorithm = DamerauLevenshtein(1, 1, 1, 1)
-    println(algorithm.execute("VOllmr", "VOllrm"))
 }
