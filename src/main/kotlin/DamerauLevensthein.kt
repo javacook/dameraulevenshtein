@@ -19,17 +19,17 @@ import java.util.HashMap
  * general allowance for adjacent character swaps.
  *
  * This implementation allows the client to specify the costs of the various
- * edit operations with the restriction that the cost of two swap operations *
- * must not be less than the cost of a delete operation followed by an insert *
- * operation. This restriction is required to preclude two swaps involving the *
- * same character being required for optimality which, in turn, enables a fast *
- * dynamic programming solution. *
+ * edit operations with the restriction that the cost of two swap operations
+ * must not be less than the cost of a delete operation followed by an insert
+ * operation. This restriction is required to preclude two swaps involving the
+ * same character being required for optimality which, in turn, enables a fast
+ * dynamic programming solution.
  *
  * The running time of the Damerau-Levenshtein algorithm is O(n*m) where n
  * is the length of the source string and m is the length of the target
  * string. This implementation consumes O(n*m) space.
  *
- * @author Kevin L. and KotlinCook
+ * @author Kevin L. and Joerg Vollmer (JavaCook & KotlinCook)
  * @param deleteCost the cost of deleting a character.
  * @param insertCost the cost of inserting a character.
  * @param replaceCost the cost of replacing a character.
@@ -51,7 +51,7 @@ class DamerauLevenshtein(private val deleteCost: Int,
      * Compute the Damerau-Levenshtein distance between the specified source
      * string and the specified target string.
      */
-    fun execute(source: String, target: String): Int {
+    fun compute(source: String, target: String): Int {
         if (source.isEmpty()) {
             return target.length * insertCost
         }
